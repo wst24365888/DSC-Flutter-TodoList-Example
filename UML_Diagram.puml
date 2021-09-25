@@ -1,0 +1,70 @@
+@startuml
+set namespaceSeparator ::
+
+class "dsc_flutter_example::main.dart::MyApp" {
+  +Widget* build()
+}
+
+class "dsc_flutter_example::models::task.dart::Task" {
+  +String* todoString
+  +String* dueDateString
+  +String* tagString
+  +DateTime* dueDate
+  +bool* isDone
+  +bool* isPinned
+  +int* compareTo()
+}
+
+"dart::core::Comparable" <|-- "dsc_flutter_example::models::task.dart::Task"
+
+class "dsc_flutter_example::models::task_list.dart::TaskList" {
+  -List<Task*>* _tasks
+  +List<Task*>* task
+  +void addTask()
+  +void sortTask()
+}
+
+class "dsc_flutter_example::views::add_tag_page.dart::AddTagPage" {
+  +_AddTagPageState* createState()
+}
+
+class "dsc_flutter_example::views::add_tag_page.dart::_AddTagPageState" {
+  -TextEditingController* _contentController
+  +void initState()
+  +void dispose()
+  +Widget* build()
+}
+
+"dsc_flutter_example::views::add_tag_page.dart::_AddTagPageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+
+class "dsc_flutter_example::views::create_new_task_page.dart::CreateNewTaskPage" {
+  +_CreateNewTaskPageState* createState()
+}
+
+class "dsc_flutter_example::views::create_new_task_page.dart::_CreateNewTaskPageState" {
+  -DateTime* _dueDate
+  -String* _dateSelected
+  -String* _tagAdded
+  -TextEditingController* _contentController
+  +void initState()
+  +void dispose()
+  +Widget* build()
+}
+
+"dsc_flutter_example::views::create_new_task_page.dart::_CreateNewTaskPageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+
+class "dsc_flutter_example::views::view_tasks_page.dart::ViewTasksPage" {
+  +_ViewTasksPageState* createState()
+}
+
+class "dsc_flutter_example::views::view_tasks_page.dart::_ViewTasksPageState" {
+  -TaskList* _taskList
+  +void initState()
+  +void dispose()
+  +Widget* build()
+}
+
+"dsc_flutter_example::views::view_tasks_page.dart::_ViewTasksPageState" o-- "dsc_flutter_example::models::task_list.dart::TaskList"
+
+
+@enduml
