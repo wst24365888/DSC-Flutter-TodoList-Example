@@ -1,6 +1,6 @@
 import 'package:dsc_flutter_example/models/task.dart';
-import 'package:dsc_flutter_example/views/addTagPage.dart';
-import 'package:dsc_flutter_example/views/textSnackBar.dart';
+import 'package:dsc_flutter_example/views/add_tag_page.dart';
+import 'package:dsc_flutter_example/views/text_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';

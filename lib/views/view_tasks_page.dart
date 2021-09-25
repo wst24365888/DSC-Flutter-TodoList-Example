@@ -1,6 +1,6 @@
-import 'package:dsc_flutter_example/models/taskList.dart';
-import 'package:dsc_flutter_example/views/createNewTaskPage.dart';
-import 'package:dsc_flutter_example/views/textSnackBar.dart';
+import 'package:dsc_flutter_example/models/task_list.dart';
+import 'package:dsc_flutter_example/views/create_new_task_page.dart';
+import 'package:dsc_flutter_example/views/text_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
