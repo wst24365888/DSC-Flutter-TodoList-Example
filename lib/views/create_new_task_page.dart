@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 class CreateNewTaskPage extends StatefulWidget {
-  CreateNewTaskPage({Key key}) : super(key: key);
+  const CreateNewTaskPage({Key key}) : super(key: key);
 
   @override
   _CreateNewTaskPageState createState() => _CreateNewTaskPageState();
@@ -43,7 +43,7 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
         child: Column(
           children: [
             // Fixed Spacing
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
 
@@ -54,7 +54,7 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
               child: Transform.scale(
                 scale: 0.8,
                 child: IconButton(
-                  icon: Icon(Icons.close),
+                  icon: const Icon(Icons.close),
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -63,7 +63,7 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
             ),
 
             // Fixed Spacing
-            SizedBox(
+            const SizedBox(
               height: 6,
             ),
 
@@ -83,13 +83,13 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
             ),
 
             // Fixed Spacing
-            SizedBox(
+            const SizedBox(
               height: 48,
             ),
 
             // Input Task
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 5.0),
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
               child: TextField(
                 controller: _contentController,
                 style: TextStyle(
@@ -116,7 +116,7 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
             ),
 
             // Fixed Spacing
-            SizedBox(
+            const SizedBox(
               height: 72,
             ),
 
@@ -139,14 +139,14 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
                       color: const Color(0x11FFBC0A),
                     ),
                     padding: const EdgeInsets.all(16),
-                    child: Icon(
+                    child: const Icon(
                       Icons.date_range,
-                      color: const Color(0xFFFFBC0A),
+                      color: Color(0xFFFFBC0A),
                     ),
                   ),
 
                   // Fixed Spacing
-                  SizedBox(
+                  const SizedBox(
                     width: 24,
                   ),
 
@@ -164,13 +164,13 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
                   ),
 
                   // Spacing
-                  Spacer(),
+                  const Spacer(),
 
                   // Select Date
                   Transform.scale(
                     scale: 0.8,
                     child: IconButton(
-                      icon: Icon(Icons.arrow_forward_ios),
+                      icon: const Icon(Icons.arrow_forward_ios),
                       onPressed: () async {
                         final _date = await showDatePicker(
                           context: context,
@@ -180,7 +180,7 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
                           builder: (BuildContext context, Widget child) {
                             return Theme(
                               data: ThemeData.light().copyWith(
-                                colorScheme: ColorScheme.light().copyWith(
+                                colorScheme: const ColorScheme.light().copyWith(
                                   primary: const Color(0xFFFFBC0A),
                                 ),
                               ),
@@ -202,7 +202,7 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
             ),
 
             // Fixed Spacing
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
 
@@ -225,14 +225,14 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
                       color: const Color(0x05EC0868),
                     ),
                     padding: const EdgeInsets.all(16),
-                    child: Icon(
+                    child: const Icon(
                       Icons.tag,
-                      color: const Color(0xFFEC0868),
+                      color: Color(0xFFEC0868),
                     ),
                   ),
 
                   // Fixed Spacing
-                  SizedBox(
+                  const SizedBox(
                     width: 24,
                   ),
 
@@ -248,16 +248,16 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
                   ),
 
                   // Spacing
-                  Spacer(),
+                  const Spacer(),
 
                   // Add Tag
                   Transform.scale(
                     scale: 0.8,
                     child: IconButton(
-                      icon: Icon(Icons.arrow_forward_ios),
+                      icon: const Icon(Icons.arrow_forward_ios),
                       onPressed: () async {
                         final _tag = await showModalBottomSheet(
-                          shape: RoundedRectangleBorder(
+                          shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10.0),
                               topRight: Radius.circular(10.0),
@@ -266,7 +266,7 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
                           isScrollControlled:
                               true, // won't scroll when keyboard came out if isScrollControlled is set to false
                           context: context,
-                          builder: (context) => AddTagPage(),
+                          builder: (context) => const AddTagPage(),
                         );
 
                         setState(() {
@@ -280,10 +280,10 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
             ),
 
             // Spacing
-            Spacer(),
+            const Spacer(),
 
             // Create Task
-            Container(
+            SizedBox(
               width: double.infinity,
               child: FlatButton(
                 shape: RoundedRectangleBorder(
@@ -291,7 +291,7 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 color: Colors.black,
-                child: Text(
+                child: const Text(
                   "CREATE TASK",
                   style: TextStyle(
                     fontWeight: FontWeight.w900,
@@ -325,7 +325,7 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
             ),
 
             // Fixed Spacing
-            SizedBox(
+            const SizedBox(
               height: 48,
             ),
           ],

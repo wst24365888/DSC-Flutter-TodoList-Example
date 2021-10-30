@@ -1,7 +1,7 @@
 import './task.dart';
 
 class TaskList {
-  List<Task> _tasks = [];
+  final List<Task> _tasks = [];
 
   List<Task> get task => _tasks;
 

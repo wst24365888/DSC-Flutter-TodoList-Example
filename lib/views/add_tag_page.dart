@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AddTagPage extends StatefulWidget {
+  const AddTagPage({Key key}) : super(key: key);
+
   @override
   _AddTagPageState createState() => _AddTagPageState();
 }
@@ -29,7 +31,7 @@ class _AddTagPageState extends State<AddTagPage> {
           children: [
             // Title
             Padding(
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               child: Text(
                 "Add Tag",
                 style: TextStyle(
@@ -41,16 +43,16 @@ class _AddTagPageState extends State<AddTagPage> {
             ),
 
             // Fixed Spacing
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
 
             // TextField
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 30.0),
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: TextField(
                 controller: _contentController,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18.0,
                   letterSpacing: 1.05,
                 ),
@@ -62,7 +64,7 @@ class _AddTagPageState extends State<AddTagPage> {
                     borderSide: BorderSide(color: Colors.blueGrey[300]),
                   ),
                   hintText: "Add some tag...",
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                     fontSize: 18.0,
                   ),
                 ),
@@ -70,13 +72,13 @@ class _AddTagPageState extends State<AddTagPage> {
             ),
 
             // Fixed Spacing
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
 
             // Add Button
             Padding(
-              padding: EdgeInsets.all(30.0),
+              padding: const EdgeInsets.all(30.0),
               child: GestureDetector(
                 onTap: () {
                   Navigator.pop(
@@ -87,8 +89,8 @@ class _AddTagPageState extends State<AddTagPage> {
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(
+                  padding: const EdgeInsets.all(10.0),
+                  child: const Text(
                     "ADD",
                     textAlign: TextAlign.center,
                     style: TextStyle(

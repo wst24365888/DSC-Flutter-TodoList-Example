@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class ViewTasksPage extends StatefulWidget {
-  ViewTasksPage({Key key}) : super(key: key);
+  const ViewTasksPage({Key key}) : super(key: key);
 
   @override
   _ViewTasksPageState createState() => _ViewTasksPageState();
 }
 
 class _ViewTasksPageState extends State<ViewTasksPage> {
-  TaskList _taskList = TaskList();
+  final TaskList _taskList = TaskList();
 
   @override
   void initState() {
@@ -35,7 +35,7 @@ class _ViewTasksPageState extends State<ViewTasksPage> {
         child: Column(
           children: [
             // Fixed Spacing
-            SizedBox(
+            const SizedBox(
               height: 78,
             ),
 
@@ -55,7 +55,7 @@ class _ViewTasksPageState extends State<ViewTasksPage> {
             ),
 
             // Fixed Spacing
-            SizedBox(
+            const SizedBox(
               height: 48,
             ),
 
@@ -63,7 +63,7 @@ class _ViewTasksPageState extends State<ViewTasksPage> {
             Expanded(
               flex: 9,
               child: ListView.separated(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   return Dismissible(
                     key: UniqueKey(),
@@ -134,13 +134,13 @@ class _ViewTasksPageState extends State<ViewTasksPage> {
                                 ),
 
                                 // Spacing
-                                SizedBox(
+                                const SizedBox(
                                   width: 4,
                                 ),
 
                                 // Complete Icon
                                 _taskList.task[index].isDone
-                                    ? Icon(
+                                    ? const Icon(
                                         Icons.check_circle,
                                         color: Colors.white,
                                       )
@@ -149,7 +149,7 @@ class _ViewTasksPageState extends State<ViewTasksPage> {
                             ),
 
                             // Spacing
-                            SizedBox(
+                            const SizedBox(
                               height: 18,
                             ),
 
@@ -169,11 +169,11 @@ class _ViewTasksPageState extends State<ViewTasksPage> {
                                 ),
 
                                 // Spacing
-                                Spacer(),
+                                const Spacer(),
 
                                 // Due Date String
                                 _taskList.task[index].isDone
-                                    ? Text(
+                                    ? const Text(
                                         "COMPLETED",
                                         style: TextStyle(
                                           fontWeight: FontWeight.w900,
@@ -197,7 +197,7 @@ class _ViewTasksPageState extends State<ViewTasksPage> {
                     ),
                   );
                 },
-                separatorBuilder: (context, index) => Divider(
+                separatorBuilder: (context, index) => const Divider(
                   height: 16,
                   color: Colors.transparent,
                 ),
@@ -206,12 +206,12 @@ class _ViewTasksPageState extends State<ViewTasksPage> {
             ),
 
             // Spacing
-            Spacer(
+            const Spacer(
               flex: 1,
             ),
 
             // Create Task
-            Container(
+            SizedBox(
               width: double.infinity,
               child: FlatButton(
                 shape: RoundedRectangleBorder(
@@ -219,7 +219,7 @@ class _ViewTasksPageState extends State<ViewTasksPage> {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 color: Colors.black,
-                child: Text(
+                child: const Text(
                   "ADD TASK",
                   style: TextStyle(
                     fontWeight: FontWeight.w900,
@@ -231,7 +231,8 @@ class _ViewTasksPageState extends State<ViewTasksPage> {
                   final _task = await Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (BuildContext context) => CreateNewTaskPage(),
+                      builder: (BuildContext context) =>
+                          const CreateNewTaskPage(),
                     ),
                   );
 
@@ -247,7 +248,7 @@ class _ViewTasksPageState extends State<ViewTasksPage> {
             ),
 
             // Fixed Spacing
-            SizedBox(
+            const SizedBox(
               height: 48,
             ),
           ],

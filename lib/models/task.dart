@@ -12,24 +12,24 @@ class Task implements Comparable {
 
   @override
   int compareTo(other) {
-    if (this.dueDate == null || other == null) {
+    if (dueDate == null || other == null) {
       return null;
     }
 
-    if (this.isPinned == other.isPinned) {
+    if (isPinned == other.isPinned) {
       // Same level -> compare due date.
-      if (this.dueDate.isAfter(other.dueDate)) {
+      if (dueDate.isAfter(other.dueDate)) {
         return 1;
-      } else if (this.dueDate.isBefore(other.dueDate)) {
+      } else if (dueDate.isBefore(other.dueDate)) {
         return -1;
-      } else if (this.dueDate == other.dueDate) {
+      } else if (dueDate == other.dueDate) {
         return 0;
       }
     } else {
       // Pinned First
       if (other.isPinned) {
         return 1;
-      } else if (this.isPinned) {
+      } else if (isPinned) {
         return -1;
       }
     }
