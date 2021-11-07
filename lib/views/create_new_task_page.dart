@@ -15,8 +15,11 @@ class CreateNewTaskPage extends StatefulWidget {
 class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
   DateTime _dueDate;
 
-  String _dateSelected = "Select Due Date";
-  String _tagAdded = "Add Tag";
+  final String _dateHint = "Select Due Date";
+  final String _tagHint = "Add Tag";
+
+  String _date = "";
+  String _tag = "";
 
   final _contentController = TextEditingController();
 
@@ -152,14 +155,13 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
 
                   // Date
                   Text(
-                    _dateSelected,
+                    _date.isEmpty ? _dateHint : _date,
                     style: TextStyle(
                       fontSize: 18,
                       height: 1.2,
                       fontWeight: FontWeight.w700,
                       color: Colors.grey[700],
-                      letterSpacing:
-                          _dateSelected == "Select Due Date" ? 0 : 1.2,
+                      letterSpacing: _date.isEmpty ? 0 : 1.2,
                     ),
                   ),
 
@@ -172,7 +174,7 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
                     child: IconButton(
                       icon: const Icon(Icons.arrow_forward_ios),
                       onPressed: () async {
-                        final _date = await showDatePicker(
+                        final DateTime result = await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
                           firstDate: DateTime.now(),
@@ -190,9 +192,9 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
                         );
 
                         setState(() {
-                          _dueDate = _date;
-                          _dateSelected = DateFormat('yyyy-MM-dd')
-                              .format(_date ?? DateTime.now());
+                          _dueDate = result;
+                          _date = DateFormat('yyyy-MM-dd')
+                              .format(result ?? DateTime.now());
                         });
                       },
                     ),
@@ -237,13 +239,17 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
                   ),
 
                   // Tag
-                  Text(
-                    _tagAdded,
-                    style: TextStyle(
-                      fontSize: 18,
-                      height: 1.2,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.grey[700],
+                  Expanded(
+                    flex: 8,
+                    child: Text(
+                      _tag.isEmpty ? _tagHint : _tag,
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.2,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.grey[700],
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
 
@@ -256,7 +262,7 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
                     child: IconButton(
                       icon: const Icon(Icons.arrow_forward_ios),
                       onPressed: () async {
-                        final _tag = await showModalBottomSheet(
+                        final String result = await showModalBottomSheet(
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10.0),
@@ -270,7 +276,7 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
                         );
 
                         setState(() {
-                          _tagAdded = _tag ?? _tagAdded;
+                          _tag = result ?? _tag;
                         });
                       },
                     ),
@@ -303,10 +309,10 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
                   if (_contentController.text == "") {
                     ScaffoldMessenger.of(context)
                         .showSnackBar(textSnackBar("You must enter a task."));
-                  } else if (_dateSelected == "Select Due Date") {
+                  } else if (_date.isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(
                         textSnackBar("Please select a due date."));
-                  } else if (_tagAdded == "Add Tag") {
+                  } else if (_tag.isEmpty) {
                     ScaffoldMessenger.of(context)
                         .showSnackBar(textSnackBar("Please add a tag."));
                   } else {
@@ -314,8 +320,8 @@ class _CreateNewTaskPageState extends State<CreateNewTaskPage> {
                       context,
                       Task(
                         todoString: _contentController.text,
-                        dueDateString: _dateSelected,
-                        tagString: _tagAdded,
+                        dueDateString: _date,
+                        tagString: _tag,
                         dueDate: _dueDate,
                       ),
                     );

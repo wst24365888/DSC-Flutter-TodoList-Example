@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xFFC200FB),
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
-      home: ViewTasksPage(),
+      home: const ViewTasksPage(),
       debugShowCheckedModeBanner: false,
     );
   }
