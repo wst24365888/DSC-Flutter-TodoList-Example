@@ -157,14 +157,18 @@ class _ViewTasksPageState extends State<ViewTasksPage> {
                             Row(
                               children: [
                                 // Tag String
-                                Text(
-                                  _taskList.task[index].tagString,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 12,
-                                    color: _taskList.task[index].isDone
-                                        ? Colors.white
-                                        : Colors.grey[500],
+                                Expanded(
+                                  flex: 1,
+                                  child: Text(
+                                    _taskList.task[index].tagString,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12,
+                                      color: _taskList.task[index].isDone
+                                          ? Colors.white
+                                          : Colors.grey[500],
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
                                   ),
                                 ),
 
